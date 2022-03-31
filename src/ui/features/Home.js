@@ -4,6 +4,7 @@ import ImageCard from "../components/ImageCard";
 import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 import { S3Client, ListObjectsCommand } from "@aws-sdk/client-s3";
+import { useMemo } from "react/cjs/react.production.min";
 
 const REGION = process.env.S3_REGION;
 const IDENTITY_POOL_ID = process.env.AWS_S3_IDENTITY_POOL_ID;
@@ -21,20 +22,21 @@ const ImagesContainer = styled.div`
   flex-wrap: wrap;
   padding: 8px 8px;
 `;
-
+const albumBucketName = "photo-viewer-kasozi";
 const test = async () => {
   // List the photo albums that exist in the bucket
-  var albumBucketName = "photo-viewer-kasozi"; //BUCKET_NAME
+
   try {
     const data = await s3.send(
       new ListObjectsCommand({ Delimiter: "/", Bucket: albumBucketName })
     );
+    console.log(data);
   } catch (err) {
-    debugger;
     console.log(err);
   }
 };
 const Home = () => {
+  //const [images, setImages] = useState([]);
   test();
   return (
     <ImagesContainer>
