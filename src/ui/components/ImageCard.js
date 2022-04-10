@@ -1,5 +1,5 @@
 import styled from "styled-components";
-const Card = styled.img`
+const Image = styled.img`
   height: 300px;
   width: 300px;
 `;
@@ -7,7 +7,7 @@ const Card = styled.img`
 const ImageCard = ({ description, src, altText, author }) => {
   return (
     <div>
-      <Card src={src} />
+      <Image src={src} />
       <div>
         <p>{description}</p>
       </div>
