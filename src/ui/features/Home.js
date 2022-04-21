@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import ImageCard from "../components/ImageCard";
-import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
+import ImageGallery from "./ImageGallery";
+/*import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 import { S3Client, ListObjectsCommand } from "@aws-sdk/client-s3";
 
@@ -16,9 +16,10 @@ const s3Client = new S3Client({
   credentials: credentials,
 });
 
-const ImagesContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+const ImageGallery = styled.div`
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   padding: 8px 8px;
 `;
 const albumBucketName = "photo-viewer-kasozi";
@@ -45,21 +46,9 @@ const getImages = async () => {
   }
 
   return [];
-};
+};*/
 const Home = () => {
-  const [images, setImages] = useState([]);
-  useEffect(async () => {
-    const initImages = await getImages();
-    setImages(initImages);
-  });
-
-  return (
-    <ImagesContainer>
-      {images.map((image) => (
-        <ImageCard key={image.src} src={image.src} />
-      ))}
-    </ImagesContainer>
-  );
+  return <ImageGallery />;
 };
 
 export default Home;
