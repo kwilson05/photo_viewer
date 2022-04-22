@@ -19,8 +19,7 @@ export const S3ImagesProvider = ({ children }) => {
   useEffect(
     () =>
       getS3Images().then((response) => {
-        const temp = createS3Images(response);
-        setImages(temp);
+        setImages(createS3Images(response));
       }),
     []
   );

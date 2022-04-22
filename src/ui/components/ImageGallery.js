@@ -20,7 +20,6 @@ const ImageGallery = () => {
     imgixParams: defaultImgixApiParams,
   };
 
-  console.log(images);
   return (
     <>
       {images?.length > 0 ? (
