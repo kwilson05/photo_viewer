@@ -16,7 +16,9 @@
     "react/prop-types": "off",
     "no-unused-vars": "warn",
     "no-extra-boolean-cast": "off",
-    "prettier/prettier": "warn"
+    "prettier/prettier": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "env": {
     "es6": true,

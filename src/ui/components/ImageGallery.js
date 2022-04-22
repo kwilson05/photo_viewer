@@ -1,6 +1,9 @@
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { useImgix } from "utils/hooks/useImgix";
+import { useS3Images } from "utils/hooks/useS3Images";
 import ImageCard from "ui/components/ImageCard";
+import { useS3ImagesApi } from "api/useS3ImagesApi";
 
 const layout = css`
   display: grid;
@@ -8,40 +11,31 @@ const layout = css`
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   padding: 8px 8px;
 `;
-const s3Images = [
-  {
-    imagePath: "makers-11.jpg",
-  },
-  {
-    imagePath: "makers-11.jpg",
-  },
-  {
-    imagePath: "makers-11.jpg",
-  },
-  {
-    imagePath: "makers-11.jpg",
-  },
-];
-const ImageGallery = () => {
-  //const { s3Images } = useS3Images();
-  const { getImgixUrl, defaultImgixApiParams } = useImgix();
 
+const ImageGallery = () => {
+  const { images } = useS3Images();
+  const { getImgixUrl, defaultImgixApiParams } = useImgix();
   const imageDefaultProps = {
     sizes: "(min-width:960px) 33vw, (min-width: 640px) 50vw, 100vw",
     imgixParams: defaultImgixApiParams,
   };
 
+  console.log(images);
   return (
     <>
-      {s3Images.map((image) => (
-        <ImageCard
-          key={image.imagePath}
-          src={getImgixUrl(image.imagePath)}
-          width={600}
-          height={600}
-          {...imageDefaultProps}
-        />
-      ))}
+      {images?.length > 0 ? (
+        images.map((image) => (
+          <ImageCard
+            key={image.src}
+            src={getImgixUrl(image.src)}
+            width={600}
+            height={600}
+            {...imageDefaultProps}
+          />
+        ))
+      ) : (
+        <p>No images to show :)</p>
+      )}
     </>
   );
 };
