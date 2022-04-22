@@ -1,11 +1,6 @@
 import { render } from "react-dom";
-import {
-  BrowserRouter,
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from "react-router-dom";
-import Home from "./ui/features/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "features/Home";
 
 render(
   <BrowserRouter>

@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import Imgix from "react-imgix";
-import { useImgix } from "../utils/hooks/useImgix";
+import { useImgix } from "utils/hooks/useImgix";
 
 const layout = css`
   display: grid;

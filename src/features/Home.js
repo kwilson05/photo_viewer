@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
-import styled from "styled-components";
-import ImageGallery from "./ImageGallery";
+import ImageGallery from "ui/components/ImageGallery";
 /*import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 import { S3Client, ListObjectsCommand } from "@aws-sdk/client-s3";
