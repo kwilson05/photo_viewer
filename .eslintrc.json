@@ -1,6 +1,10 @@
 {
-  "extends": ["eslint:recommended", "prettier"],
-  "plugins": [],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["import", "react", "react-hooks"],
   "parserOptions": {
     "ecmaVersion": 2021,
     "sourceType": "module",
@@ -8,7 +12,12 @@
       "jsx": true
     }
   },
-  "rules": {},
+  "rules": {
+    "react/prop-types": "off",
+    "no-unused-vars": "warn",
+    "no-extra-boolean-cast": "off",
+    "prettier/prettier": "warn"
+  },
   "env": {
     "es6": true,
     "browser": true,

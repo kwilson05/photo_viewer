@@ -1,3 +1,4 @@
+import React from "react";
 import ImageGallery from "ui/components/ImageGallery";
 /*import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";

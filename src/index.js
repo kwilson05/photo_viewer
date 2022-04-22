@@ -1,12 +1,4 @@
 import { render } from "react-dom";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "features/Home";
+import App from "src/App";
 
-render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home />} />
-    </Routes>
-  </BrowserRouter>,
-  document.getElementById("root")
-);
+render(<App />, document.getElementById("root"));
