@@ -1,13 +1,10 @@
 import styled from "styled-components";
-const Image = styled.img`
-  height: 300px;
-  width: 300px;
-`;
+import Imgix from "react-imgix";
 
-const ImageCard = ({ description, src, altText, author }) => {
+const ImageCard = ({ description, ...props }) => {
   return (
     <div>
-      <Image src={src} />
+      <Imgix {...props} />
       <div>
         <p>{description}</p>
       </div>

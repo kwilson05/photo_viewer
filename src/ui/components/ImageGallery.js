@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import Imgix from "react-imgix";
 import { useImgix } from "utils/hooks/useImgix";
+import ImageCard from "ui/components/ImageCard";
 
 const layout = css`
   display: grid;
@@ -24,23 +24,22 @@ const s3Images = [
 ];
 const ImageGallery = () => {
   //const { s3Images } = useS3Images();
-  //const { getImgxUrl } = useImgix();
+  const { getImgixUrl, defaultImgixApiParams } = useImgix();
 
-  const { getImgixUrl } = useImgix();
+  const imageDefaultProps = {
+    sizes: "(min-width:960px) 33vw, (min-width: 640px) 50vw, 100vw",
+    imgixParams: defaultImgixApiParams,
+  };
 
   return (
     <>
       {s3Images.map((image) => (
-        <Imgix
+        <ImageCard
           key={image.imagePath}
-          sizes="(min-width:960px) 33vw, (min-width: 640px) 50vw, 100vw"
           src={getImgixUrl(image.imagePath)}
-          imgixParams={{
-            fit: "crop",
-            fm: "jpg",
-          }}
           width={600}
           height={600}
+          {...imageDefaultProps}
         />
       ))}
     </>
