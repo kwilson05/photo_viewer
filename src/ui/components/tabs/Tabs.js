@@ -30,7 +30,9 @@ const Tabs = ({ className, children, tabHeaders }) => {
       <nav className="tab-header-container">
         {tabHeaders.map((tabHeader) => {
           const { title, tabId } = tabHeader;
-          return <TabHeader tabId={tabId} title={title}></TabHeader>;
+          return (
+            <TabHeader key={tabId} tabId={tabId} title={title}></TabHeader>
+          );
         })}
       </nav>
       <div>{children}</div>
