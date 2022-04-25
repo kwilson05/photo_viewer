@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useS3ImagesApi } from "api/useS3ImagesApi";
+import { useS3Api } from "api/useS3Api";
 
 const createS3Images = (s3ClientResponse) => {
   const s3Images = s3ClientResponse.Contents.map((s3Image) => ({
@@ -14,7 +14,7 @@ const S3ImagesContext = React.createContext([]);
 export const S3ImagesProvider = ({ children }) => {
   const [images, setImages] = useState([]);
 
-  const { getS3Images } = useS3ImagesApi();
+  const { getS3Images } = useS3Api();
 
   useEffect(
     () =>
