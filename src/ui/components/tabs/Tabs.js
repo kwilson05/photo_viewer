@@ -3,11 +3,12 @@ import styled, { css } from "styled-components";
 import { TabsProvider } from "ui/components/tabs/TabsContext";
 import TabHeader from "ui/components/tabs/TabHeader";
 
+const layout = css``;
+
 const TabHeaderContainer = styled.nav`
   display: flex;
   justify-content: center;
 `;
-const layout = css``;
 
 const sortHeadersByIDAsc = (tabA, tabB) => {
   if (tabA.tabId < tabB.tabId) return -1;

@@ -17,7 +17,6 @@ const intitalS3Context = {
     region: S3_REGION,
     credentials: AWS_COGNITO_CREDENTIALS,
   }),
-  category: null,
   s3BucketName: S3_BUCKET_NAME,
 };
 const S3Context = React.createContext(intitalS3Context);
