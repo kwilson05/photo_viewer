@@ -4,6 +4,7 @@ import ImageGallery from "ui/components/ImageGallery";
 import HomeHeader from "features/home/HomeHeader";
 import Tabs from "ui/components/tabs/Tabs";
 import TabContent from "ui/components/tabs/TabContent";
+import GalleryLibrary from "features/home/GalleryLibrary";
 
 const layout = css``;
 
@@ -25,7 +26,9 @@ const Home = ({ className }) => (
       <TabContent tabId={0}>
         <ImageGallery />
       </TabContent>
-      <TabContent tabId={1}></TabContent>
+      <TabContent tabId={1}>
+        <GalleryLibrary />
+      </TabContent>
     </Tabs>
   </div>
 );
