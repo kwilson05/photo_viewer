@@ -3,11 +3,11 @@ import styled, { css } from "styled-components";
 import { TabsProvider } from "ui/components/tabs/TabsContext";
 import TabHeader from "ui/components/tabs/TabHeader";
 
-const layout = css`
-  .tab-header-container {
-    display: flex;
-  }
+const TabHeaderContainer = styled.nav`
+  display: flex;
+  justify-content: center;
 `;
+const layout = css``;
 
 const sortHeadersByIDAsc = (tabA, tabB) => {
   if (tabA.tabId < tabB.tabId) return -1;
@@ -27,14 +27,14 @@ const Tabs = ({ className, children, tabHeaders }) => {
 
   return (
     <TabsProvider value={(activeTabId, setActiveTabId)}>
-      <nav className="tab-header-container">
+      <TabHeaderContainer className="tab-header-container">
         {tabHeaders.map((tabHeader) => {
           const { title, tabId } = tabHeader;
           return (
             <TabHeader key={tabId} tabId={tabId} title={title}></TabHeader>
           );
         })}
-      </nav>
+      </TabHeaderContainer>
       <div>{children}</div>
     </TabsProvider>
   );
