@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 import { useImgix } from "utils/hooks/useImgix";
 import { useS3Images } from "utils/hooks/useS3Images";
 import ImageCard from "ui/components/ImageCard";
-import { useS3ImagesApi } from "api/useS3ImagesApi";
 
 const layout = css`
   display: grid;
@@ -12,7 +11,7 @@ const layout = css`
   padding: 8px 8px;
 `;
 
-const ImageGallery = () => {
+const ImageGallery = ({ className }) => {
   const { images } = useS3Images();
   const { getImgixUrl, defaultImgixApiParams } = useImgix();
   const imageDefaultProps = {
@@ -21,21 +20,19 @@ const ImageGallery = () => {
   };
 
   return (
-    <>
+    <div className={className}>
       {images?.length > 0 ? (
         images.map((image) => (
           <ImageCard
             key={image.src}
             src={getImgixUrl(image.src)}
-            width={600}
-            height={600}
             {...imageDefaultProps}
           />
         ))
       ) : (
         <p>No images to show :)</p>
       )}
-    </>
+    </div>
   );
 };
 
