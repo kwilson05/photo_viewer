@@ -11,12 +11,18 @@ const layout = css`
   padding: 8px 8px;
 `;
 
+const isS3Image = (fileName) => fileName.includes(".");
 const createS3Images = (s3ClientResponse) => {
-  const s3Images = s3ClientResponse.Contents.map((s3Image) => ({
-    src: s3Image.Key,
-  }));
+  debugger;
+  const s3Images = s3ClientResponse.Contents.map((s3Image) => {
+    return isS3Image(s3Image.Key)
+      ? {
+          src: s3Image.Key,
+        }
+      : null;
+  });
 
-  return s3Images;
+  return s3Images.filter((image) => image);
 };
 
 const ImageGallery = ({ className }) => {
@@ -28,14 +34,6 @@ const ImageGallery = ({ className }) => {
   };
 
   const { getS3Images } = useS3Api();
-
-  useEffect(
-    () =>
-      getS3Images().then((response) => {
-        setImages(createS3Images(response));
-      }),
-    []
-  );
 
   useEffect(
     () =>
