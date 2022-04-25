@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { useImgix } from "utils/hooks/useImgix";
-import { useS3Images } from "utils/hooks/useS3Images";
 import ImageCard from "ui/components/ImageCard";
+import { useS3Api } from "api/useS3Api";
 
 const layout = css`
   display: grid;
@@ -11,13 +11,39 @@ const layout = css`
   padding: 8px 8px;
 `;
 
+const createS3Images = (s3ClientResponse) => {
+  const s3Images = s3ClientResponse.Contents.map((s3Image) => ({
+    src: s3Image.Key,
+  }));
+
+  return s3Images;
+};
+
 const ImageGallery = ({ className }) => {
-  const { images } = useS3Images();
+  const [images, setImages] = useState([]);
   const { getImgixUrl, defaultImgixApiParams } = useImgix();
   const imageDefaultProps = {
     sizes: "(min-width:960px) 33vw, (min-width: 640px) 50vw, 100vw",
     imgixParams: defaultImgixApiParams,
   };
+
+  const { getS3Images } = useS3Api();
+
+  useEffect(
+    () =>
+      getS3Images().then((response) => {
+        setImages(createS3Images(response));
+      }),
+    []
+  );
+
+  useEffect(
+    () =>
+      getS3Images().then((response) => {
+        setImages(createS3Images(response));
+      }),
+    []
+  );
 
   return (
     <div className={className}>
