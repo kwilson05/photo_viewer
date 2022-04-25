@@ -27,7 +27,7 @@ const Tabs = ({ className, children, tabHeaders }) => {
 
   return (
     <TabsProvider value={(activeTabId, setActiveTabId)}>
-      <TabHeaderContainer className="tab-header-container">
+      <TabHeaderContainer>
         {tabHeaders.map((tabHeader) => {
           const { title, tabId } = tabHeader;
           return (
