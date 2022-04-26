@@ -1,9 +1,9 @@
 import React from "react";
 
 const GalleryCard = ({ gallery }) => {
-  const { galleryName } = gallery;
+  const { name } = gallery;
 
-  return <div> {galleryName}</div>;
+  return <div> {name}</div>;
 };
 
 export default GalleryCard;

@@ -5,29 +5,22 @@ import GalleryCard from "ui/components/GalleryCard";
 
 const layout = ``;
 
-const createS3Galleries = (data) => {
-  return (
-    data.CommonPrefixes &&
-    data.CommonPrefixes.map((gallery) => ({
-      galleryName: decodeURIComponent(gallery.Prefix.replace("/", "")),
-    }))
-  );
-};
-
 const GalleryLibrary = ({ className }) => {
   const [galleries, setGalleries] = useState([]);
   const { getS3Galleries } = useS3Api();
 
   useEffect(
     () =>
-      getS3Galleries().then((data) => {
-        setGalleries(createS3Galleries(data));
+      getS3Galleries().then((galleries) => {
+        setGalleries(galleries);
       }),
     []
   );
 
   return galleries ? (
-    galleries.map((gallery) => <GalleryCard gallery={gallery} />)
+    galleries.map((gallery) => (
+      <GalleryCard key={gallery.name} gallery={gallery} />
+    ))
   ) : (
     <p>No galleries here :)</p>
   );
