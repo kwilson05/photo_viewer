@@ -3,12 +3,9 @@ import Imgix from "react-imgix";
 
 const ImageCard = ({ description, ...props }) => {
   return (
-    <div>
+    <>
       <Imgix {...props} />
-      <div>
-        <p>{description}</p>
-      </div>
-    </div>
+    </>
   );
 };
 

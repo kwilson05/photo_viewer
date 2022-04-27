@@ -5,18 +5,28 @@ import ImageCard from "ui/components/ImageCard";
 import { useS3Api } from "api/useS3Api";
 
 const layout = css`
-  display: grid;
-  overflow: hidden;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  padding: 8px 8px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  row-gap: 8px;
+  column-gap: 8px;
+  padding: 8px 48px;
 `;
 
 const HighlightsGallery = ({ className }) => {
   const [images, setImages] = useState([]);
   const { getImgixUrl, defaultImgixApiParams } = useImgix();
+
+  const imgixParams = {
+    ...defaultImgixApiParams,
+    fit: "crop",
+    ar: "3:2",
+  };
   const imageDefaultProps = {
-    sizes: "(min-width:960px) 33vw, (min-width: 640px) 50vw, 100vw",
-    imgixParams: defaultImgixApiParams,
+    imgixParams: imgixParams,
+    sizes: "(min-width:960px) 22vw, (min-width: 640px) 40vw, 100vw",
   };
 
   const { getS3Images } = useS3Api();
