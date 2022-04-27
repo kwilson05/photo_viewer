@@ -19,10 +19,10 @@ const GalleryLibrary = ({ className }) => {
   );
 
   return (
-    <GalleryView>
+    <GalleryView className={className}>
       {galleries ? (
         galleries.map((gallery) => (
-          <GalleryCard key={gallery.name} gallery={gallery} />
+          <GalleryCard key={gallery.name} gallery={gallery.name} />
         ))
       ) : (
         <p>No galleries here :)</p>

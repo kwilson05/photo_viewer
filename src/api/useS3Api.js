@@ -4,13 +4,24 @@ import { useS3 } from "utils/hooks/useS3";
 const getPrefix = (folder) => (!!folder ? `${folder}/` : "");
 
 const createS3Images = (data) => {
-  const images = data.Contents.map((s3Image) => {
-    return s3Image.Size > 0 ? { src: s3Image.Key } : null;
+  const images = queryS3Folder({
+    data,
+    images: [],
   });
-
-  return (images && images.filter((image) => !!image)) || [];
+  return images;
 };
+const queryS3Folder = ({ data, images }) => {
+  const s3Objects = data.Contents.map((s3Object) =>
+    s3Object.Size > 0 ? { src: s3Object.Key } : null
+  );
+  images.push(...s3Objects.filter((s3Object) => !!s3Object));
 
+  if (data.isTruncated) {
+    return queryS3Folder({ data, images });
+  }
+
+  return images;
+};
 const createS3Galleries = (data) => {
   return (
     data.CommonPrefixes &&

@@ -22,8 +22,6 @@ const GalleryCard = ({ className, gallery }) => {
   const [imageCount, setImageCount] = useState(0);
   const [galleryBackgroundImage, setGalleryBackgroundImage] = useState({});
 
-  const { name: galleryName } = gallery;
-
   const { getImgixUrl, defaultImgixApiParams } = useImgix();
 
   const imgixProps = {
@@ -35,7 +33,7 @@ const GalleryCard = ({ className, gallery }) => {
 
   useEffect(
     () =>
-      getS3Images(galleryName).then((s3Images) => {
+      getS3Images(gallery).then((s3Images) => {
         setImageCount(s3Images.length);
         setGalleryBackgroundImage(findGalleryBackgroundImage(s3Images));
       }),
@@ -47,7 +45,7 @@ const GalleryCard = ({ className, gallery }) => {
       {galleryBackgroundImage && (
         <Imgix {...imgixProps} src={getImgixUrl(galleryBackgroundImage.src)} />
       )}
-      <p className="gallery-title">{galleryName}</p>
+      <p className="gallery-title">{gallery}</p>
       <p>{imageCount} photos</p>
     </div>
   );

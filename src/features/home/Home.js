@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import HighlightsImageGallery from "features/home/HighlightsGallery";
+import HighlightsImageGallery from "features/home/HighlightsImageGallery";
 import HomeHeader from "features/home/HomeHeader";
 import Tabs from "ui/components/tabs/Tabs";
 import TabContent from "ui/components/tabs/TabContent";
