@@ -3,11 +3,11 @@ import styled, { css } from "styled-components";
 import { useImgix } from "utils/hooks/useImgix";
 import ImageCard from "ui/components/ImageCard";
 import { useS3Api } from "api/useS3Api";
-import Gallery from "ui/components/Gallery";
+import GalleryView from "ui/layouts/GalleryView";
 
 const layout = css``;
 
-const HighlightsGallery = ({ className }) => {
+const HighlightsImageGallery = ({ className }) => {
   const [images, setImages] = useState([]);
   const { getImgixUrl, defaultImgixApiParams } = useImgix();
 
@@ -27,7 +27,7 @@ const HighlightsGallery = ({ className }) => {
   );
 
   return (
-    <Gallery>
+    <GalleryView>
       {images?.length > 0 ? (
         images.map((image) => (
           <ImageCard
@@ -39,10 +39,10 @@ const HighlightsGallery = ({ className }) => {
       ) : (
         <p>No images to show :)</p>
       )}
-    </Gallery>
+    </GalleryView>
   );
 };
 
-export default styled(HighlightsGallery)`
+export default styled(HighlightsImageGallery)`
   ${layout}
 `;

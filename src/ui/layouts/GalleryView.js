@@ -11,10 +11,10 @@ const layout = css`
   padding: 16px 48px;
 `;
 
-const Gallery = ({ className, children }) => (
+const GalleryView = ({ className, children }) => (
   <div className={className}>{children}</div>
 );
 
-export default styled(Gallery)`
+export default styled(GalleryView)`
   ${layout}
 `;

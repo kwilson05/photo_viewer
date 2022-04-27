@@ -18,7 +18,7 @@ const findGalleryBackgroundImage = (images) => {
   return galleryBackgroundImage ? galleryBackgroundImage : images[0];
 };
 
-const GalleryCard = ({ className, gallery, ...props }) => {
+const GalleryCard = ({ className, gallery }) => {
   const [imageCount, setImageCount] = useState(0);
   const [galleryBackgroundImage, setGalleryBackgroundImage] = useState({});
 

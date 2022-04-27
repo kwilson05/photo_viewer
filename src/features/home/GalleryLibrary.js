@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useS3Api } from "api/useS3Api";
 import GalleryCard from "ui/components/GalleryCard";
-import Gallery from "ui/components/Gallery";
+import GalleryView from "ui/layouts/GalleryView";
 
 const layout = ``;
 
@@ -19,7 +19,7 @@ const GalleryLibrary = ({ className }) => {
   );
 
   return (
-    <Gallery>
+    <GalleryView>
       {galleries ? (
         galleries.map((gallery) => (
           <GalleryCard key={gallery.name} gallery={gallery} />
@@ -27,7 +27,7 @@ const GalleryLibrary = ({ className }) => {
       ) : (
         <p>No galleries here :)</p>
       )}
-    </Gallery>
+    </GalleryView>
   );
 };
 
