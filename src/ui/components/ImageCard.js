@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Imgix from "react-imgix";
 
-const ImageCard = ({ description, ...props }) => {
+const ImageCard = ({ ...props }) => {
   return (
     <>
       <Imgix {...props} />
