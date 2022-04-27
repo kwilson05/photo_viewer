@@ -5,7 +5,10 @@ import ImageCard from "ui/components/ImageCard";
 import { useS3Api } from "api/useS3Api";
 import GalleryView from "ui/layouts/GalleryView";
 
-const layout = css``;
+const layout = css`
+  overflow-y: auto;
+  height: 100%;
+`;
 
 const ImageGallery = ({ className, gallery }) => {
   const [images, setImages] = useState([]);
@@ -27,19 +30,21 @@ const ImageGallery = ({ className, gallery }) => {
   );
 
   return (
-    <GalleryView className={className}>
-      {images?.length > 0 ? (
-        images.map((image) => (
-          <ImageCard
-            key={image.src}
-            src={getImgixUrl(image.src)}
-            {...imageDefaultProps}
-          />
-        ))
-      ) : (
-        <p>No images to show :)</p>
-      )}
-    </GalleryView>
+    <div className={className}>
+      <GalleryView>
+        {images?.length > 0 ? (
+          images.map((image) => (
+            <ImageCard
+              key={image.src}
+              src={getImgixUrl(image.src)}
+              {...imageDefaultProps}
+            />
+          ))
+        ) : (
+          <p>No images to show :)</p>
+        )}
+      </GalleryView>
+    </div>
   );
 };
 

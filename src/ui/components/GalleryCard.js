@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link as ReactLink } from "react-router-dom";
 import styled, { css } from "styled-components";
 import Imgix from "react-imgix";
 import { useImgix } from "utils/hooks/useImgix";
@@ -42,11 +43,16 @@ const GalleryCard = ({ className, gallery }) => {
 
   return (
     <div className={className}>
-      {galleryBackgroundImage && (
-        <Imgix {...imgixProps} src={getImgixUrl(galleryBackgroundImage.src)} />
-      )}
-      <p className="gallery-title">{gallery}</p>
-      <p>{imageCount} photos</p>
+      <ReactLink to={`/gallery/${gallery}`}>
+        {galleryBackgroundImage && (
+          <Imgix
+            {...imgixProps}
+            src={getImgixUrl(galleryBackgroundImage.src)}
+          />
+        )}
+        <p className="gallery-title">{gallery}</p>
+        <p>{imageCount} photos</p>
+      </ReactLink>
     </div>
   );
 };
