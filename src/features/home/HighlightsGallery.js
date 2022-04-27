@@ -12,20 +12,15 @@ const layout = css`
   height: 100%;
   row-gap: 8px;
   column-gap: 8px;
-  padding: 8px 48px;
+  padding: 16px 48px;
 `;
 
 const HighlightsGallery = ({ className }) => {
   const [images, setImages] = useState([]);
   const { getImgixUrl, defaultImgixApiParams } = useImgix();
 
-  const imgixParams = {
-    ...defaultImgixApiParams,
-    fit: "crop",
-    ar: "3:2",
-  };
   const imageDefaultProps = {
-    imgixParams: imgixParams,
+    imgixParams: { ...defaultImgixApiParams, fit: "crop", ar: "3:2" },
     sizes: "(min-width:960px) 22vw, (min-width: 640px) 40vw, 100vw",
   };
 
