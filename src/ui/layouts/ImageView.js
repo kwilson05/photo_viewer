@@ -13,9 +13,7 @@ const layout = css`
 const ImageView = ({ className, children, redirectPath }) => (
   <div className={className}>
     <nav className="back-button">
-      <ReactLink to={redirectPath}>
-        <ArrowLeft />
-      </ReactLink>
+      <ArrowLeft />
     </nav>
     {children}
   </div>

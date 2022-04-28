@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 
-const TabsContext = createContext({ activeTabId: 0, setActiveTabId: () => {} });
+const TabsContext = createContext({ activeTabId: 0, setActiveTab: () => {} });
 
 export const ACTIVE_TAB_LOCAL_STORAGE_KEY = "active-tab-key";
 

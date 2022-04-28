@@ -33,7 +33,7 @@ const style = css`
 const ImageCard = ({ className, imageTitle, ...props }) => (
   <div className={className}>
     <Imgix {...props} />
-    <aside class="image-title">
+    <aside className="image-title">
       <p>{imageTitle}</p>
     </aside>
   </div>

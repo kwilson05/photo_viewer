@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link as ReactLink } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { useImgix } from "utils/hooks/useImgix";
 import ImageCard from "ui/components/ImageCard";
@@ -44,14 +45,18 @@ const ImageGallery = ({ className, gallery }) => {
     <div className={className}>
       <GalleryView>
         {images?.length > 0 ? (
-          images.map((image) => (
-            <ImageCard
-              key={image.src}
-              src={getImgixUrl(image.src)}
-              imageTitle={getImageTitle(image.src)}
-              {...imageDefaultProps}
-            />
-          ))
+          images.map((image, imageIndex) => {
+            const index = imageIndex;
+            return (
+              <ReactLink key={image.src} to={`/${gallery}/photo/${index + 1}`}>
+                <ImageCard
+                  src={getImgixUrl(image.src)}
+                  imageTitle={getImageTitle(image.src)}
+                  {...imageDefaultProps}
+                />
+              </ReactLink>
+            );
+          })
         ) : (
           <p>No images to show :)</p>
         )}

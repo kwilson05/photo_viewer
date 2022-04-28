@@ -17,7 +17,13 @@ const Gallery = ({ className }) => {
           <ArrowLeft />
         </ReactLink>
       </nav>
-      <ImageGallery className={className} gallery={galleryName} />
+      <ImageGallery
+        className={className}
+        gallery={galleryName}
+        redirect={{
+          to: "",
+        }}
+      />
     </>
   );
 };
