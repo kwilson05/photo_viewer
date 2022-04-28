@@ -21,7 +21,7 @@ const layout = css`
 `;
 
 const TabHeader = ({ className, tabId, title }) => {
-  const { activeTabId, setActiveTabId } = useTabsContext();
+  const { activeTabId, setActiveTab } = useTabsContext();
   const isDisabled = activeTabId === tabId;
   return (
     <button
@@ -29,7 +29,7 @@ const TabHeader = ({ className, tabId, title }) => {
       type="button"
       disabled={isDisabled}
       role="button"
-      onClick={() => setActiveTabId(tabId)}
+      onClick={() => setActiveTab(tabId)}
     >
       {title}
     </button>

@@ -16,8 +16,6 @@ const sortHeadersByIDAsc = (tabA, tabB) => {
 };
 
 const Tabs = ({ className, children, tabHeaders }) => {
-  const [activeTabId, setActiveTabId] = useState(0);
-
   //If no headers, render no component
   if (!tabHeaders || tabHeaders?.length <= 0) {
     return null;
@@ -27,7 +25,7 @@ const Tabs = ({ className, children, tabHeaders }) => {
   tabHeaders.sort(sortHeadersByIDAsc);
 
   return (
-    <TabsProvider value={(activeTabId, setActiveTabId)}>
+    <TabsProvider>
       <TabHeaderContainer>
         {tabHeaders.map((tabHeader) => {
           const { title, tabId } = tabHeader;
