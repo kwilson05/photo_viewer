@@ -11,14 +11,14 @@ const layout = css`
 const Gallery = ({ className }) => {
   const { galleryName } = useParams();
   return (
-    <div className={className}>
-      <nav>
+    <>
+      <nav className={className}>
         <ReactLink to="/">
           <ArrowLeft />
         </ReactLink>
       </nav>
       <ImageGallery className={className} gallery={galleryName} />
-    </div>
+    </>
   );
 };
 
