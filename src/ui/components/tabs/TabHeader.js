@@ -6,12 +6,18 @@ const layout = css`
   cursor: pointer;
   border: none;
   padding: 12px 20px;
-  color: cyan;
+
   transition: background-color 0.2s ease, color 0.2s ease;
   font-weight: 700;
+  background-color: light-gray;
+  color: orange;
+
+  &:not(:disabled) {
+    background-color: white;
+    color: cyan;
+  }
 
   &:hover:not(:disabled) {
-    background-color: light-gray;
     color: orange;
   }
 
