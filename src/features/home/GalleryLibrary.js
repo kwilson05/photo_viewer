@@ -4,7 +4,7 @@ import { useS3Api } from "api/useS3Api";
 import GalleryCard from "ui/components/GalleryCard";
 import GalleryView from "ui/layouts/GalleryView";
 
-const layout = ``;
+const layout = `padding: 16px 48px;`;
 
 const GalleryLibrary = ({ className }) => {
   const [galleries, setGalleries] = useState([]);

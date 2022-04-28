@@ -1,10 +1,12 @@
 import styled, { css } from "styled-components";
 import ImageGallery from "ui/components/ImageGallery";
 
-const layout = css``;
+const layout = css`
+  padding: 16px 48px;
+`;
 
 const HighlightsImageGallery = ({ className }) => (
-  <ImageGallery gallery="highlights" />
+  <ImageGallery className={className} gallery="highlights" />
 );
 
 export default styled(HighlightsImageGallery)`

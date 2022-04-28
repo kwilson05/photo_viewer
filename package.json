@@ -48,6 +48,7 @@
     "features": "/./src/features",
     "ui": "/./src/ui",
     "utils": "/./src/utils",
-    "api": "/./src/api"
+    "api": "/./src/api",
+    "icons": "/./src/icons"
   }
 }

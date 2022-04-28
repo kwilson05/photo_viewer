@@ -6,7 +6,6 @@ const layout = css`
   overflow-x: hidden;
   row-gap: 8px;
   column-gap: 8px;
-  padding: 16px 48px;
 `;
 
 const GalleryView = ({ className, children }) => (
