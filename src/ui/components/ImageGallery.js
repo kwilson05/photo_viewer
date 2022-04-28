@@ -10,6 +10,17 @@ const layout = css`
   height: 100%;
 `;
 
+const getImageTitle = (imageSource) => {
+  let imageTitle = imageSource;
+  const indexPathSeparator = imageSource.indexOf("/");
+  if (indexPathSeparator >= 0) {
+    imageTitle = getImageTitle(imageSource.slice(indexPathSeparator + 1));
+  }
+
+  const periodIndex = imageTitle.indexOf(".");
+  return imageTitle.slice(0, periodIndex);
+};
+
 const ImageGallery = ({ className, gallery }) => {
   const [images, setImages] = useState([]);
   const { getImgixUrl, defaultImgixApiParams } = useImgix();
@@ -37,6 +48,7 @@ const ImageGallery = ({ className, gallery }) => {
             <ImageCard
               key={image.src}
               src={getImgixUrl(image.src)}
+              imageTitle={getImageTitle(image.src)}
               {...imageDefaultProps}
             />
           ))
