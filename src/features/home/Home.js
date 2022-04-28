@@ -15,7 +15,7 @@ const Home = ({ className }) => (
       tabHeaders={[
         {
           tabId: 0,
-          title: "Photos",
+          title: "Highlights",
         },
         {
           tabId: 1,
